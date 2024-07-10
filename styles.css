@@ -62,44 +62,42 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-html, body {
+ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Empêche le défilement horizontal */
     width: 100%;
-    max-width: 1024px;
     font-family: 'Poppins', sans-serif;
     color: #333;
+    
 }
 
 * {
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur et la hauteur */
+    
+    padding: 0;
+    
 }
 
 header {
     background: #000;
     color: #fff;
-    padding: 1em 0;
     position: fixed;
     width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+   
     padding: 0 2em;
-    width: 90%;
+    width: 100%;
     max-width: 100%;
 }
 
-.logo {
-    font-size: 1.5em;
-    font-weight: 600;
-}
+
+
 
 .menu-toggle {
     display: none;
@@ -125,6 +123,11 @@ nav {
     font-weight: 600;
 }
 
+.container {
+  /*  margin: 0 15px; /* Ajoute les marges à gauche et à droite */
+}
+
+
 .hero {
     background: linear-gradient(to bottom, #2C3E50, #000000);
     height: 100vh;
@@ -133,6 +136,14 @@ nav {
     justify-content: center;
     text-align: center;
     color: #fff;
+    margin: 0;
+    border-radius: 0;
+    transition: all 0.9s ease;
+}
+
+.hero.scrolled {
+    margin: 0 15px;
+    border-radius: 20px; /* Ajustez cette valeur selon vos besoins */
 }
 
 .hero-content h1 {
@@ -165,8 +176,9 @@ section {
 }
 
 #about, #services, #contact {
-    max-width: 800px;
+    
     margin: 0 auto;
+    
 }
 
 .service {

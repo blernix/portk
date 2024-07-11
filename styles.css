@@ -73,7 +73,8 @@ body {
     overflow-x: hidden;
     width: 100%;
     font-family: 'Poppins', sans-serif;
-    color: #333;    
+    color: #333;   
+    height: 100vh; 
 }
 
 header {
@@ -83,7 +84,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: center;
-    z-index: 3;
+    z-index: 8;
 }
 
 nav {
@@ -111,7 +112,7 @@ nav {
 }
 
 .nav-links.open {
-    max-height: 500px; /* suffisamment grand pour afficher tous les éléments */
+    max-height: 500px; 
     opacity: 1;
 }
 
@@ -136,6 +137,7 @@ nav {
     margin: 0;
     border-radius: 0;
     transition: all 0.9s ease;
+    z-index: 1;
 }
 
 .hero.scrolled {
@@ -153,6 +155,7 @@ nav {
     margin-bottom: 1em;
 }
 
+
 .cta {
     background: #fff;
     color: #000;
@@ -168,12 +171,73 @@ nav {
 }
 
 section {
-    padding: 4em 2em;
+    
     text-align: center;
 }
 
-#about, #services {
+
+.page {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: center;
+    font-size: calc(var(--font-size) * 1px);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .introduction {
+    height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+   
+  }
+  
+  .page {
+    color: #fff;
+    font-size: 3rem;
+    text-align: center;
+  }
+  
+  @media(min-width: 768px) {
+    .page {
+      font-size: 5rem;
+    }
+  }
+  
+  .page:nth-child(odd) {
+    background: #7e05d7;
+  }
+  
+  .page:nth-child(even) {
+    background: #f21e56;
+  }
+  
+  .text {
+    display: inline-block;
+    transition: all 0.25s;
+  }
+  
+  .text--enter[data-scroll="out"] .char {
+    opacity: 0;
+    transform: translate(0, -150%);
+  }
+  
+  .text--enter .char {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+
+
+#about, #services #technologies #contact {
     margin: 0 auto;
+    height: 100vh;
+    padding: 4em 2em;
+   
 }
 
 .service {
@@ -237,6 +301,10 @@ section {
     margin: 0 auto;
 }
 
+#contact .cta {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 footer {
     background: #000;
     color: #fff;
@@ -263,4 +331,15 @@ footer {
     .nav-links li {
         margin: 1em 0;
     }
+
+}
+
+.animated-word {
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+    height: 100vh;
+}
+
+.animated-word.visible {
+    transform: scale(1.5);
+    font-size: 1.5em;;
 }

@@ -1,8 +1,16 @@
 // CARROUSEL 
 
+
 document.getElementById('menu-toggle').addEventListener('click', function() {
-    document.getElementById('nav-links').classList.toggle('active');
+    document.getElementById('nav-links').classList.toggle('open');
 });
+
+window.addEventListener('scroll', function() {
+    if (document.getElementById('nav-links').classList.contains('open')) {
+        document.getElementById('nav-links').classList.remove('open');
+    }
+});
+
 
 
 // HERO ANIMATION 

@@ -1,4 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+    box-sizing: border-box; 
+    padding: 0;
+    list-style: none;
+}
 /* .tracking-out-expand-fwd {
     -webkit-animation: tracking-out-expand-fwd 2.5s normal forwards;
     animation: tracking-out-expand-fwd 2.5s normal forwards;
@@ -60,23 +65,15 @@
 
 /* styles.css */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
- body {
+
+body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Empêche le défilement horizontal */
+    overflow-x: hidden;
     width: 100%;
     font-family: 'Poppins', sans-serif;
-    color: #333;
-    
-}
-
-* {
-    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur et la hauteur */
-    
-    padding: 0;
-    
+    color: #333;    
 }
 
 header {
@@ -90,14 +87,10 @@ header {
 }
 
 nav {
-   
     padding: 0 2em;
     width: 100%;
     max-width: 100%;
 }
-
-
-
 
 .menu-toggle {
     display: none;
@@ -111,6 +104,15 @@ nav {
     justify-content: center;
     margin: 0;
     padding: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.nav-links.open {
+    max-height: 500px; /* suffisamment grand pour afficher tous les éléments */
+    opacity: 1;
 }
 
 .nav-links li {
@@ -122,11 +124,6 @@ nav {
     text-decoration: none;
     font-weight: 600;
 }
-
-.container {
-  /*  margin: 0 15px; /* Ajoute les marges à gauche et à droite */
-}
-
 
 .hero {
     background: linear-gradient(to bottom, #2C3E50, #000000);
@@ -143,7 +140,7 @@ nav {
 
 .hero.scrolled {
     margin: 0 15px;
-    border-radius: 20px; /* Ajustez cette valeur selon vos besoins */
+    border-radius: 20px;
 }
 
 .hero-content h1 {
@@ -175,17 +172,14 @@ section {
     text-align: center;
 }
 
-#about, #services, #contact {
-    
+#about, #services {
     margin: 0 auto;
-    
 }
 
 .service {
     margin-bottom: 2em;
 }
 
-/* Conteneur pour les cartes de service */
 .services-container {
     display: flex;
     flex-wrap: wrap;
@@ -193,7 +187,6 @@ section {
     gap: 1em;
 }
 
-/* Styles pour les cartes de service */
 .service-card {
     background: #fff;
     border-radius: 10px;
@@ -203,25 +196,21 @@ section {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Transition pour les cartes au survol */
 .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Styles pour les titres des cartes de service */
 .service-card h3 {
     font-size: 1.5em;
     margin-bottom: 0.5em;
 }
 
-/* Styles pour les paragraphes des cartes de service */
 .service-card p {
     font-size: 1em;
     color: #666;
 }
 
-/* Section Carrousel */
 #technologies {
     padding: 4em 2em;
     text-align: center;
@@ -248,24 +237,19 @@ section {
     margin: 0 auto;
 }
 
-/* Responsive: pour les petits écrans */
+footer {
+    background: #000;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
 @media (max-width: 768px) {
-    .services-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .service-card {
-        width: 100%;
-        max-width: none;
-    }
-
     .menu-toggle {
         display: block;
     }
 
     .nav-links {
-        display: none;
         flex-direction: column;
         width: 100%;
         text-align: center;
@@ -276,39 +260,7 @@ section {
         z-index: 1000;
     }
 
-    .nav-links.active {
-        display: flex;
-    }
-
     .nav-links li {
         margin: 1em 0;
     }
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 1em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form button {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 1em 2em;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-form button:hover {
-    background: #333;
-}
-
-footer {
-    background: #000;
-    color: #fff;
-    padding: 1em 0;
-    text-align: center;
 }

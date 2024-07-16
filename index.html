@@ -8,6 +8,7 @@
     <meta name="keywords" content="développeur web, création de site internet, refonte de site web, maintenance de site web, développement full stack">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,20 +36,21 @@
 
     <section class="introduction">
    <div class="page">
-    <div class="text text--enter" data-scroll="out" data-splitting="">Créez</div>
+    <div class="text create">Créez</div>
    </div>
    <div class="page">
-    <div class="text text--enter" data-scroll="out" data-splitting="">Réinventez</div>
+    <div class="text reinvent">Réinventez</div>
    </div>
    <div class="page">
-    <div class="text text--enter" data-scroll="out" data-splitting="">Réussisez</div>
+    <div class="text succeed">Réussisez</div>
    </div>
     </section>
 
     <section id="about">
         <h2>À Propos</h2>
-        <p>Passionné par le <span class="animated-word">développement web</span>, je suis un <span class="animated-word">développeur full stack</span> spécialisé dans la création de <span class="animated-word">sites web sur mesure</span>. J’aide les <span class="animated-word">entreprises</span> et les <span class="animated-word">particuliers</span> à se démarquer en ligne grâce à des solutions <span class="animated-word">innovantes</span> et <span class="animated-word">performantes</span>. Mon objectif : transformer vos <span class="animated-word">idées</span> en <span class="animated-word">réalité digitale</span>.</p>
+        <p id="about-text">Passionné par le développement web, je suis un développeur full stack spécialisé dans la création de sites web sur mesure. J’aide les entreprises et les particuliers à se démarquer en ligne grâce à des solutions innovantes et performantes. Mon objectif : transformer vos idées en réalité digitale.</p>
     </section>
+
 
     <section id="services">
         <h2>Services</h2>
@@ -57,34 +59,63 @@
             <div class="service-card">
                 <h3>Création de sites web</h3>
                 <ul>
-                    <li>Sites statiques</li>
-                    <li>Blog</li>
-                    <li>E-commerce</li>
+                    <li onclick="toggleDescription(this)">Sites statiques
+                        <span class="arrow">▼</span>
+                        <p class="description">Sites sans base de données.</p>
+                    </li>
+                    <li onclick="toggleDescription(this)">Blog
+                        <span class="arrow">▼</span>
+                        <p class="description">Plateforme de partage d'articles.</p>
+                    </li>
+                    <li onclick="toggleDescription(this)">E-commerce
+                        <span class="arrow">▼</span>
+                        <p class="description">Boutique en ligne pour vendre vos produits.</p>
+                    </li>
                 </ul>
             </div>
             <div class="service-card">
                 <h3>Refonte de site web</h3>
                 <ul>
-                    <li>Modernisation de l'existant</li>
-                    <li>Optimisation UX/UI</li>
+                    <li onclick="toggleDescription(this)">Modernisation de l'existant
+                        <span class="arrow">▼</span>
+                        <p class="description">Rafraîchissement de l'apparence.</p>
+                    </li>
+                    <li onclick="toggleDescription(this)">Optimisation UX/UI
+                        <span class="arrow">▼</span>
+                        <p class="description">Amélioration de l'expérience utilisateur.</p>
+                    </li>
                 </ul>
             </div>
             <div class="service-card">
                 <h3>Maintenance et Support</h3>
                 <ul>
-                    <li>Mise à jour régulières</li>
-                    <li>Sécurité renforcée</li>
+                    <li onclick="toggleDescription(this)">Mise à jour régulières
+                        <span class="arrow">▼</span>
+                        <p class="description">Actualisation des contenus et fonctionnalités.</p>
+                    </li>
+                    <li onclick="toggleDescription(this)">Sécurité renforcée
+                        <span class="arrow">▼</span>
+                        <p class="description">Protection contre les menaces en ligne.</p>
+                    </li>
                 </ul>
             </div>
             <div class="service-card">
                 <h3>Développement sur mesure</h3>
                 <ul>
-                    <li>Application web</li>
-                    <li>Intégration API</li>
+                    <li onclick="toggleDescription(this)">Application web
+                        <span class="arrow">▼</span>
+                        <p class="description">Développement d'applications spécifiques.</p>
+                    </li>
+                    <li onclick="toggleDescription(this)">Intégration API
+                        <span class="arrow">▼</span>
+                        <p class="description">Connexion de services externes.</p>
+                    </li>
                 </ul>
             </div>
         </div>
     </section>
+    
+    
 
     <section id="technologies">
         <h2>Technologies Utilisées</h2>
@@ -113,6 +144,7 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
 <script src="services.js"></script>
 <script src="nav.js"></script>
 </body>

@@ -21,33 +21,77 @@ document.addEventListener('scroll', function() {
     }
 });
 
-// Word Animation
-const animatedWords = document.querySelectorAll('.animated-word');
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Initialiser Splitting.js pour diviser le texte en lignes
+    Splitting({ target: '#about-text', by: 'lines' });
 
-const checkVisibility = () => {
-    const triggerBottom = window.innerHeight / 5 * 4;
+    const lines = document.querySelectorAll('#about-text .line');
 
-    animatedWords.forEach(word => {
-        const wordTop = word.getBoundingClientRect().top;
+    const checkVisibility = () => {
+        const triggerBottom = window.innerHeight / 5 * 4;
 
-        if (wordTop < triggerBottom) {
-            word.classList.add('visible');
-        } else {
-            word.classList.remove('visible');
-        }
+        lines.forEach(line => {
+            const lineTop = line.getBoundingClientRect().top;
+
+            if (lineTop < triggerBottom) {
+                line.classList.add('visible');
+            } else {
+                line.classList.remove('visible');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility();
+});
+
+
+function toggleDescription(element) {
+    element.classList.toggle('active');
+    let description = element.querySelector('.description');
+    let arrow = element.querySelector('.arrow');
+    if (element.classList.contains('active')) {
+        description.style.maxHeight = description.scrollHeight + "px";
+        description.style.opacity = 1;
+        arrow.style.transform = 'rotate(180deg)';
+    } else {
+        description.style.maxHeight = 0;
+        description.style.opacity = 0;
+        arrow.style.transform = '';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.8
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            const textElement = entry.target.querySelector('.text');
+            if (entry.isIntersecting) {
+                textElement.classList.add('animate');
+            } else {
+                textElement.classList.remove('animate');
+            }
+        });
+    }, observerOptions);
+
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        observer.observe(page);
     });
-};
+});
 
-window.addEventListener('scroll', checkVisibility);
-checkVisibility();
-
-
-
-document.addEventListener("DOMContentLoaded", function() {
-    Splitting();
-  
-    ScrollOut({
-      targets: '.text',
-      scrollingElement: '.introduction'
-    });
-  });

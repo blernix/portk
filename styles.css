@@ -66,7 +66,9 @@
 /* styles.css */
 
 
-
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
@@ -138,6 +140,7 @@ nav {
     border-radius: 0;
     transition: all 0.9s ease;
     z-index: 1;
+    
 }
 
 .hero.scrolled {
@@ -175,6 +178,65 @@ section {
     text-align: center;
 }
 
+/* Créez - Partir de rien et se former progressivement */
+.create {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.create.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Réinventez - Flou puis devenir clair */
+.reinvent {
+    opacity: 0;
+    filter: blur(5px);
+    transform: rotate(5deg);
+    transition: opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reinvent.animate {
+    opacity: 1;
+    filter: blur(0);
+    transform: rotate(0);
+}
+
+/* Réussissez - Apparition rapide suivie d'un éclat */
+.succeed {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    position: relative;
+}
+
+.succeed.animate {
+    opacity: 1;
+}
+
+.succeed.animate::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: shine 1s ease-out 0.3s forwards;
+}
+
+@keyframes shine {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
 
 .page {
     height: 100vh;
@@ -186,50 +248,31 @@ section {
     align-items: center;
     justify-content: center;
     position: relative;
-  }
-  
-  .introduction {
-    height: 100vh;
-    overflow: auto;
-    overflow-x: hidden;
-    scroll-snap-type: y mandatory;
-   
-  }
-  
-  .page {
-    color: #fff;
+    color: #070707;
     font-size: 3rem;
     text-align: center;
-  }
-  
-  @media(min-width: 768px) {
+}
+
+@media(min-width: 768px) {
     .page {
-      font-size: 5rem;
+        font-size: 5rem;
     }
-  }
-  
-  .page:nth-child(odd) {
+}
+
+/* .page:nth-child(odd) {
     background: #7e05d7;
-  }
-  
-  .page:nth-child(even) {
+}
+
+.page:nth-child(even) {
     background: #f21e56;
-  }
+}
+
+.introduction {
+    overflow: hidden;
+} */
+ 
   
-  .text {
-    display: inline-block;
-    transition: all 0.25s;
-  }
   
-  .text--enter[data-scroll="out"] .char {
-    opacity: 0;
-    transform: translate(0, -150%);
-  }
-  
-  .text--enter .char {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
   
 
 
@@ -237,11 +280,8 @@ section {
     margin: 0 auto;
     height: 100vh;
     padding: 4em 2em;
+    
    
-}
-
-.service {
-    margin-bottom: 2em;
 }
 
 .services-container {
@@ -258,6 +298,8 @@ section {
     padding: 2em;
     max-width: 300px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
 }
 
 .service-card:hover {
@@ -270,10 +312,46 @@ section {
     margin-bottom: 0.5em;
 }
 
-.service-card p {
-    font-size: 1em;
-    color: #666;
+.service-card ul {
+    list-style-type: none;
+    padding: 0;
 }
+
+.service-card li {
+    cursor: pointer;
+    margin-bottom: 1em;
+    position: relative;
+    padding-right: 1.5em;
+    font-size: 1.1em;
+}
+
+.service-card li .arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1em;
+    transition: transform 0.3s ease;
+}
+
+.service-card li.active .arrow {
+    transform: rotate(180deg);
+}
+
+.service-card li .description {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.5em;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.service-card li.active .description {
+    max-height: 100px; /* Adjust as needed */
+    opacity: 1;
+}
+
 
 #technologies {
     padding: 4em 2em;
@@ -334,12 +412,17 @@ footer {
 
 }
 
-.animated-word {
-    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
-    height: 100vh;
+#about {
+    overflow: hidden;
 }
 
-.animated-word.visible {
-    transform: scale(1.5);
-    font-size: 1.5em;;
+.line {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.line.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

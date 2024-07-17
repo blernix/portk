@@ -4,6 +4,8 @@
     padding: 0;
     list-style: none;
 }
+
+
 /* .tracking-out-expand-fwd {
     -webkit-animation: tracking-out-expand-fwd 2.5s normal forwards;
     animation: tracking-out-expand-fwd 2.5s normal forwards;
@@ -178,6 +180,57 @@ section {
     text-align: center;
 }
 
+
+/* styles.css */
+.introduction {
+    position: relative;
+    overflow: hidden;
+}
+
+.background-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, #fff 10%, #a5d4f9 80%);
+}
+
+.animated-shape {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.1); /* Changer la couleur des bulles pour plus de contraste */
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ajouter des ombres portées pour améliorer la visibilité */
+    animation: moveShapes 20s infinite;
+}
+
+.shape1 {
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 10%;
+}
+
+.shape2 {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+}
+
+.shape3 {
+    width: 200px;
+    height: 200px;
+    top: 80%;
+    left: 20%;
+}
+
+@keyframes moveShapes {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(50px, 50px); }
+    100% { transform: translate(0, 0); }
+}
 /* Créez - Partir de rien et se former progressivement */
 .create {
     opacity: 0;
@@ -195,7 +248,7 @@ section {
     opacity: 0;
     filter: blur(5px);
     transform: rotate(5deg);
-    transition: opacity 0.7s ease-out, filter 0.7s ease-out, transform 0.7s ease-out;
+    transition: opacity 0.7s ease-out, filter 0.7s ease-out, transform 1s ease-out;
 }
 
 .reinvent.animate {
@@ -259,19 +312,6 @@ section {
     }
 }
 
-/* .page:nth-child(odd) {
-    background: #7e05d7;
-}
-
-.page:nth-child(even) {
-    background: #f21e56;
-}
-
-.introduction {
-    overflow: hidden;
-} */
- 
-  
   
   
 
